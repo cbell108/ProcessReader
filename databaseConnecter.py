@@ -31,7 +31,7 @@ def conn_sqlalchemy(conn_str):
 
 def exec_stored_proc_sqlalchemy(engine, drop_tbl_flag):
     with engine.connect() as conn:
-        stmt = text(f"EXEC dbo.usp_test @reset=:reset_arg")
+        stmt = text(f"EXEC dbo.usp_CreateOrTruncate_ProcessLogTable @reset=:reset_arg")
         conn.execute(stmt, {'reset_arg': drop_tbl_flag})
         conn.commit()
 
@@ -49,7 +49,7 @@ def insert_sqlalchemy(engine, data):
 #
 # # Creates and uses pyodbc connection
 # def conn_pyodbc(conn_str, data, table_name, drop_tbl_flag=False):
-#     stor_pro = "dbo.usp_test"
+#     stor_pro = "dbo.usp_CreateOrTruncate_ProcessLogTable"
 #
 #     conn = pyodbc.connect(conn_str)
 #     with conn.cursor() as cursor:
