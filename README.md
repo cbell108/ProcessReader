@@ -1,4 +1,8 @@
+This is a quick and brief portfolio project to demonstrate using sqlalchemy to connect and insert data into a Microsoft SQL Server database.
+
+
 This program is used to read information about currently running processes (like Task Manager), and periodically insert this data into a database table or output as a .csv file.
+Errors are written to the event log and can be seen in the Windows Event Viewer.
 
 1) Reads parameters from environment variable 'PROCESS_LOG_ARGS'
 * Parameters are DRIVER, SERVER, DATABASE, DROP_ON_ITER, CSV_PATH, OUTPUT_CSV, FILTERS, SLEEP_SEC
@@ -10,3 +14,5 @@ This program is used to read information about currently running processes (like
 
 3) Uses stored procedure 'usp_CreateOrTruncate_ProcessLogTable' to create table 'ProcessLog' if object does not exist
 * Env variable 'DROP_ON_ITER' is passed as argument to trunicate table every iteration.
+
+4) UID and PWD entry are not implmeneted yet (to avoid reading as plaintext)
